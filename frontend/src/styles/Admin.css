@@ -1,0 +1,53 @@
+.admin {
+    padding: 100px 50px;
+    min-height: 80vh;
+}
+
+.admin h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+
+.admin-container {
+    display: flex;
+    gap: 50px;
+}
+
+.add-pizza,
+.order-monitor {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.add-pizza form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-pizza input,
+.add-pizza textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-pizza button {
+    padding: 15px;
+    background-color: #121619;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.order-list {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 200px;
+}

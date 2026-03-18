@@ -1,0 +1,54 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: pizza-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/pizza_db
+    username: postgres
+    password: Newbie@1994
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: pizza-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${SUPABASE_PROJECT_URL}/auth/v1
+          jwk-set-uri: ${SUPABASE_PROJECT_URL}/auth/v1/jwks
+
+paystack:
+  secret-key: ${PAYSTACK_SECRET_KEY}
+  base-url: https://api.paystack.co
+
+kafka:
+  topics:
+    order-placed: order-placed
+    payment-confirmed: payment-confirmed
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
